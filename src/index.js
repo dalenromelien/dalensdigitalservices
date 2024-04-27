@@ -2,17 +2,33 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import App from './App';
+import Landing from './Pages/Landing';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import "./assets/index.css";
+import "./assets/bootstrap.custom.css";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route index={true} path="/" element={<Landing />} />
+    </Route>
+  )
+);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
