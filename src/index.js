@@ -11,8 +11,6 @@ import {
 import App from './App';
 import Landing from './Pages/Landing';
 import reportWebVitals from './reportWebVitals';
-import "./assets/index.css";
-import "./assets/bootstrap.custom.css";
 
 const container = document.getElementById('root');
 const root = createRoot(container);
