@@ -1,21 +1,23 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import "./Header.css";
 
 const Header = () => {
   return (
     <>
       <header>
-        <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
+        <Navbar bg="primary" variant="dark" expand="md" collapseOnSelect>
           <div>
             <LinkContainer to="/">
-              <Navbar.Brand>
-                {/* <img
+              <h3 className="site-title">Dalen's Digital Services</h3>
+              {/* <Navbar.Brand>
+                <img
                   src={insertLogo}
                   className=" w-[11rem]  object-cover"
                   alt="Dalen's Digital Services"
-                /> */}
-              </Navbar.Brand>
+                />
+              </Navbar.Brand> */}
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

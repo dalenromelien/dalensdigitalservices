@@ -1,18 +1,19 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import App from './App';
-import Landing from './Pages/Landing';
-import reportWebVitals from './reportWebVitals';
+import App from "./App";
+import Landing from "./Pages/Landing/Landing";
+import reportWebVitals from "./reportWebVitals";
+import "./assets/bootstrap.min.css";
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
 
 const router = createBrowserRouter(

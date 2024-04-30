@@ -1,0 +1,13 @@
+.title-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+
+.landing-title {
+  color: aqua;
+}
+
+.sub-title {
+  color: azure;
+}
