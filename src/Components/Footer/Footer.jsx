@@ -1,21 +1,18 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import "./Footer.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-light py-4">
+    <footer className="text-light footer">
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <div>
-            <p className="mb-0">Your Company Name</p>
-            <p className="mb-0">Address: 123 Street, City, Country</p>
-            <p className="mb-0">Phone: 123-456-7890</p>
-            <p className="mb-0">Email: info@example.com</p>
-          </div>
-          <div>
-            <p className="mb-0">&copy; {currentYear} Your Company</p>
+            <p className="mb-0">
+              &copy; {currentYear} Dalen's Digital Services LLC
+            </p>
           </div>
         </div>
       </Container>

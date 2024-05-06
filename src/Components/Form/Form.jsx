@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import "./Form.css";
 
 const MyForm = () => {
   const [formData, setFormData] = useState({
@@ -23,8 +24,8 @@ const MyForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formName">
+    <Form onSubmit={handleSubmit} className="form">
+      <Form.Group controlId="formName" className="form-group">
         <Form.Label>Name</Form.Label>
         <Form.Control
           type="text"
@@ -35,7 +36,7 @@ const MyForm = () => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formEmail">
+      <Form.Group controlId="formEmail" className="form-group">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           type="email"
@@ -44,13 +45,10 @@ const MyForm = () => {
           value={formData.email}
           onChange={handleChange}
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="formMessage">
-        <Form.Label>Message</Form.Label>
+      <Form.Group controlId="formMessage" className="form-group">
+        <Form.Label>Describe Your Business</Form.Label>
         <Form.Control
           as="textarea"
           rows={3}
@@ -61,7 +59,7 @@ const MyForm = () => {
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" className="submit-button">
         Submit
       </Button>
     </Form>

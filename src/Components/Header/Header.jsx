@@ -6,11 +6,13 @@ import "./Header.css";
 const Header = () => {
   return (
     <>
-      <header>
-        <Navbar bg="primary" variant="dark" expand="md" collapseOnSelect>
+      <header className="header-container">
+        <Navbar expand="md" collapseOnSelect>
           <div>
             <LinkContainer to="/">
-              <h3 className="site-title">Dalen's Digital Services</h3>
+              <Nav.Link>
+                <h3 className="site-title">Dalen's Digital Services</h3>
+              </Nav.Link>
               {/* <Navbar.Brand>
                 <img
                   src={insertLogo}
@@ -21,7 +23,11 @@ const Header = () => {
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ms-auto"></Nav>
+              <Nav className="ms-auto">
+                <LinkContainer to="/About">
+                  <Nav.Link>About</Nav.Link>
+                </LinkContainer>
+              </Nav>
             </Navbar.Collapse>
           </div>
         </Navbar>
