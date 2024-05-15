@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <main className="py-3">
-        <div class="video-container">
+        <div className="video-container">
           <video autoPlay loop muted>
             <source src={BackgroundVideo} type="video/mp4" />
             Your browser does not support the video tag.

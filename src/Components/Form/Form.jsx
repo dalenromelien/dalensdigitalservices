@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
+import { useSubscribeMutation } from "../../slices/mailChimpApiSlice";
 import "./Form.css";
 
 function MyForm() {
@@ -10,6 +11,8 @@ function MyForm() {
   const [lastName, setLastName] = useState("");
   const [siteType, setSiteType] = useState("");
   const [businessDescription, setBusinessDescription] = useState("");
+
+  const [subscribe, { isLoading, error }] = useSubscribeMutation();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,7 +34,7 @@ function MyForm() {
     setBusinessDescription(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Perform form submission logic here
     console.log({
@@ -41,6 +44,14 @@ function MyForm() {
       siteType,
       businessDescription,
     });
+    const response = await subscribe({
+      email,
+      firstName,
+      lastName,
+      siteType,
+      bizDesc: businessDescription,
+    });
+    console.log(response);
     // Reset form fields
     setEmail("");
     setFirstName("");
