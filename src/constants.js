@@ -1,0 +1,1 @@
+export const MAIL_CHIMP_API = "/mailChimp";

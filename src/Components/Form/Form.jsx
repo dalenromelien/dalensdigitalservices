@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
+import { useSubscribeMutation } from "../../slices/mailChimpApiSlice";
+import { toast } from "react-toastify";
 import "./Form.css";
 
 function MyForm() {
@@ -10,6 +12,8 @@ function MyForm() {
   const [lastName, setLastName] = useState("");
   const [siteType, setSiteType] = useState("");
   const [businessDescription, setBusinessDescription] = useState("");
+
+  const [subscribe, { isLoading }] = useSubscribeMutation();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,7 +35,7 @@ function MyForm() {
     setBusinessDescription(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Perform form submission logic here
     console.log({
@@ -41,6 +45,21 @@ function MyForm() {
       siteType,
       businessDescription,
     });
+    try {
+      const response = await subscribe({
+        email,
+        firstName,
+        lastName,
+        siteType,
+        bizDesc: businessDescription,
+      });
+
+      toast.success("Subscribed!");
+      console.log(response);
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+      console.log(error);
+    }
     // Reset form fields
     setEmail("");
     setFirstName("");
@@ -143,7 +162,7 @@ function MyForm() {
         </Form.Group>
 
         <Button variant="primary" type="submit" className="submit-button">
-          Submit
+          {isLoading ? "Loading" : "Submit"}
         </Button>
       </Form>
     </Container>
