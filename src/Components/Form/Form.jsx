@@ -13,7 +13,7 @@ function MyForm() {
   const [siteType, setSiteType] = useState("");
   const [businessDescription, setBusinessDescription] = useState("");
 
-  const [subscribe, { isLoading }] = useSubscribeMutation();
+  const [subscribe, { isLoading, error }] = useSubscribeMutation();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -54,8 +54,12 @@ function MyForm() {
         bizDesc: businessDescription,
       });
 
-      toast.success("Subscribed!");
-      console.log(response);
+      if (response.status === 200) {
+        toast.success("Subscribed!");
+      } else {
+        toast.error("Failed to Subscribe", error);
+      }
+      console.log(response?.data);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
       console.log(error);
