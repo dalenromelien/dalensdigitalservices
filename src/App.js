@@ -3,10 +3,13 @@ import { Outlet } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import BackgroundVideo from "./assets/animatedSpace.mp4";
 import "./App.css";
 
 function App() {
+
   return (
     <>
       <Header />
@@ -22,6 +25,7 @@ function App() {
         </Container>
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 }

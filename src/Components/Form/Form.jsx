@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSubscribeMutation } from "../../slices/mailChimpApiSlice";
+import { toast } from "react-toastify";
 import "./Form.css";
 
 function MyForm() {
@@ -12,7 +13,7 @@ function MyForm() {
   const [siteType, setSiteType] = useState("");
   const [businessDescription, setBusinessDescription] = useState("");
 
-  const [subscribe, { isLoading, error }] = useSubscribeMutation();
+  const [subscribe, { isLoading }] = useSubscribeMutation();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -44,14 +45,21 @@ function MyForm() {
       siteType,
       businessDescription,
     });
-    const response = await subscribe({
-      email,
-      firstName,
-      lastName,
-      siteType,
-      bizDesc: businessDescription,
-    });
-    console.log(response);
+    try {
+      const response = await subscribe({
+        email,
+        firstName,
+        lastName,
+        siteType,
+        bizDesc: businessDescription,
+      });
+
+      toast.success("Subscribed!");
+      console.log(response);
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+      console.log(error);
+    }
     // Reset form fields
     setEmail("");
     setFirstName("");
@@ -154,7 +162,7 @@ function MyForm() {
         </Form.Group>
 
         <Button variant="primary" type="submit" className="submit-button">
-          Submit
+          {isLoading ? "Loading" : "Submit"}
         </Button>
       </Form>
     </Container>
