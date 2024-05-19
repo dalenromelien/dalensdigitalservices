@@ -54,15 +54,15 @@ function MyForm() {
         bizDesc: businessDescription,
       });
 
-      if (response.status === 200) {
+      if (response?.data?.status === "subscribed") {
         toast.success("Subscribed!");
       } else {
         toast.error("Failed to Subscribe", error);
       }
-      console.log(response?.data);
+      console.log(response);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
-      console.log(error);
+      console.log(error?.data);
     }
     // Reset form fields
     setEmail("");
@@ -166,7 +166,7 @@ function MyForm() {
         </Form.Group>
 
         <Button variant="primary" type="submit" className="submit-button">
-          {isLoading ? "Loading" : "Submit"}
+          {isLoading ? "Loading..." : "Submit"}
         </Button>
       </Form>
     </Container>
