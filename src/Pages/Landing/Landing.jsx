@@ -9,8 +9,8 @@ const Landing = () => {
       <Container className="d-flex justify-content-center align-items-center title-container">
         <h1 className="landing-title">Your Friendly Neighborhood Tech Guy</h1>
         <h3 className="sub-title">services coming soon</h3>
-        <MyForm />
       </Container>
+      <MyForm className="form" />
     </>
   );
 };
